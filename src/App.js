@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FunctionComponent from './components/FunctionComponent/FunctionComponent';
+import ClassComponent from './components/ClassComponent/ClassComponent';
+import LifeCycle from './components/LifeCycle/LifeCycle';
+import ErrorCatch from './components/ErrorCatch/ErrorCatch';
+import FunctionComponentLifeCycle from './components/LifeCycle/FunctionComponentLifeCycle';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ClassComponent name="classComponent" number={1} />
+      <FunctionComponent name="functionComponent" number={2} />
+      <ErrorCatch>
+        <LifeCycle />
+      </ErrorCatch>
+      <FunctionComponentLifeCycle />
     </div>
   );
 }
