@@ -33,9 +33,9 @@ const FunctionComponentLifeCycle = ({ name, number, children }) => {
 
   return (
     <div>
-      <p>현재 State value {{ stateNumber }}</p>
+      <p>현재 State value {stateNumber}</p>
       <button onClick={onClickStateNumber}>+1</button>
-      <p>현재 Reducer value {{ state }}</p>
+      <p>현재 Reducer value {state.value}</p>
       <button onClick={() => dispatch({ type: 'INCREMENT' })}>
         reducer dispatch +1
       </button>
