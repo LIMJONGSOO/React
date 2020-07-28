@@ -66,7 +66,7 @@ function App() {
         />
         <Route
           exact
-          path="/todo"
+          path="/todoList"
           render={() => (
             <>
               <Menu />
