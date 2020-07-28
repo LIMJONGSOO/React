@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import './App.css';
 import Menu from './components/Menu/MenuComponent';
 import FunctionComponent from './components/FunctionComponent/FunctionComponent';
@@ -30,6 +30,40 @@ function App() {
       checked: false,
     },
   ]);
+
+  const nextId = useRef(4);
+
+  const onInsert = useCallback(
+    (text) => {
+      const todo = {
+        id: nextId.current,
+        text,
+        checked: false,
+      };
+      setTodos(todos.concat(todo));
+      console.log(todos);
+      nextId.current += 1;
+    },
+    [todos],
+  );
+
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos],
+  );
+
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        ),
+      );
+    },
+    [todos],
+  );
   return (
     <BrowserRouter>
       <div className="App">
@@ -90,8 +124,12 @@ function App() {
             <>
               <Menu />
               <TodoTemplate>
-                <TodoInsert />
-                <TodoList todos={todos} />
+                <TodoInsert onInsert={onInsert} />
+                <TodoList
+                  todos={todos}
+                  onRemove={onRemove}
+                  onToggle={onToggle}
+                />
               </TodoTemplate>
             </>
           )}
