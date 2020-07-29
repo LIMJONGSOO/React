@@ -58,7 +58,7 @@ const FunctionComponentLifeCycle = ({ name, number, children }) => {
       <button onClick={() => dispatch({ type: 'INCREMENT' })}>
         reducer dispatch +1
       </button>
-      <p>Reducer value + State valeu {sum}</p>
+      <p>Reducer value + State value {sum}</p>
     </div>
   );
 };
